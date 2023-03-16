@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
 	resolve: {
-		extensions: ['.jsx', '.js'],
+		extensions: ['.tsx', '.ts'],
 	},
-	entry: './src/index.jsx',
+	entry: './src/index.tsx',
 	output: {
 		path: path.resolve(__dirname, 'static/frontend/'),
 		filename: 'main.js',
@@ -14,7 +14,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(ts|tsx)$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',

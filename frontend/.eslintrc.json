@@ -20,16 +20,21 @@
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "tsconfigRootDir": "/home/dmitry/BusinessCardSite/business_card_site/frontend"
     },
     "plugins": [
-        "react"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-uses-react": "off"
     },
     "settings": {
         "react": {
           "version": "detect"
         }
-    }
+    },
+    "parser": "@typescript-eslint/parser"
 }
