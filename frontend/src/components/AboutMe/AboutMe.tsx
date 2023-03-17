@@ -1,4 +1,5 @@
 import './AboutMe.css';
+import ru from '../../lang';
 import portrait from './img/dmitrii.votchitsev_2215405451567359885_0.jpg';
 
 export default function AboutMe() {

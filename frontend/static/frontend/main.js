@@ -60,13 +60,43 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/context/LangContext.tsx":
+/*!*************************************!*\
+  !*** ./src/context/LangContext.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"LangContext\": () => (/* binding */ LangContext),\n/* harmony export */   \"LangState\": () => (/* binding */ LangState)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _lang_ru__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lang/ru */ \"./src/lang/ru.ts\");\n/* harmony import */ var _lang_en__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lang/en */ \"./src/lang/en.ts\");\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }\nfunction _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : \"undefined\" != typeof Symbol && arr[Symbol.iterator] || arr[\"@@iterator\"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i[\"return\"] && (_r = _i[\"return\"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\n\n\n\nvar LangContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({\n  lang: 'ru',\n  set: function set() {\n    return undefined;\n  },\n  content: _lang_ru__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\nvar LangState = function LangState(_ref) {\n  var children = _ref.children;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('ru'),\n    _useState2 = _slicedToArray(_useState, 2),\n    lang = _useState2[0],\n    setLang = _useState2[1];\n  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_lang_ru__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n    _useState4 = _slicedToArray(_useState3, 2),\n    content = _useState4[0],\n    setContent = _useState4[1];\n  var set = function set() {\n    if (lang === 'ru') {\n      setLang('en');\n      return;\n    }\n    setLang('ru');\n  };\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    if (lang === 'ru') {\n      setContent(_lang_ru__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n      return;\n    }\n    setContent(_lang_en__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n  }, [lang]);\n  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(LangContext.Provider, {\n    value: {\n      lang: lang,\n      set: set,\n      content: content\n    },\n    children: children\n  });\n};\n\n//# sourceURL=webpack://frontend/./src/context/LangContext.tsx?");
+
+/***/ }),
+
 /***/ "./src/index.tsx":
 /*!***********************!*\
   !*** ./src/index.tsx ***!
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ \"./src/App.tsx\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n\n\n\n\nvar container = document.querySelector('#root');\nvar root = react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot(container, HTMLElement);\nroot.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {}));\n\n//# sourceURL=webpack://frontend/./src/index.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ \"./src/App.tsx\");\n/* harmony import */ var _context_LangContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context/LangContext */ \"./src/context/LangContext.tsx\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\n\n\n\n\n\nvar container = document.querySelector('#root');\nvar root = react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot(container);\nroot.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_context_LangContext__WEBPACK_IMPORTED_MODULE_2__.LangState, {\n  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {})\n}));\n\n//# sourceURL=webpack://frontend/./src/index.tsx?");
+
+/***/ }),
+
+/***/ "./src/lang/en.ts":
+/*!************************!*\
+  !*** ./src/lang/en.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  aboutMe: {\n    name: 'Dmitrii Votchitsev',\n    birth: '28 October 1988',\n    city: 'Kaliningrad, Russia',\n    email: 'dmitry.votchitsev@gmail.com',\n    phone: '+7 (906) 233-75-99',\n    currentJob: 'Freelancer'\n  }\n});\n\n//# sourceURL=webpack://frontend/./src/lang/en.ts?");
+
+/***/ }),
+
+/***/ "./src/lang/ru.ts":
+/*!************************!*\
+  !*** ./src/lang/ru.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  aboutMe: {\n    name: 'Дмитрий Вотчицев',\n    birth: '28 октября 1988 года',\n    city: 'Калининград',\n    email: 'dmitry.votchitsev@gmail.com',\n    phone: '+7 (906) 233-75-99',\n    currentJob: 'Фрилансер'\n  }\n});\n\n//# sourceURL=webpack://frontend/./src/lang/ru.ts?");
 
 /***/ }),
 
