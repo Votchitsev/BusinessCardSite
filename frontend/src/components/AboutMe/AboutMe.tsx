@@ -1,8 +1,14 @@
+import {useContext} from 'react';
+import {LangContext} from '../../context/LangContext';
 import './AboutMe.css';
-import ru from '../../lang';
+import Contacts from './Contacts';
 import portrait from './img/dmitrii.votchitsev_2215405451567359885_0.jpg';
+import Links from './Links';
+import Text from './Text';
 
 export default function AboutMe() {
+	const {content} = useContext(LangContext);
+
 	return (
 		<section className='about-me'>
 			<div className='about-me--info'>
@@ -10,23 +16,9 @@ export default function AboutMe() {
 					<img className='about-me--info--photo' src={portrait as string} />
 				</div>
 				<div className='about-me--info--text'>
-					<h2 className='about-me--info--text--title'>More Info About Me</h2>
-					<div className='about-me--info--text--title--underline-container'>
-						<div className='about-me--info--text--title--underline'></div>
-					</div>
-					<p className='about-me--info--text--content'></p>
-					<div className='about-me--info--text--contacts'>
-						<div className='about-me--info--text--contacts--item'>Dmitrii Votchitsev</div>
-						<div className='about-me--info--text--contacts--item'>28 October 1988</div>
-						<div className='about-me--info--text--contacts--item'>Kaliningrad, Russia</div>
-						<div className='about-me--info--text--contacts--item'>dmitry.votchitsev@gmail.com</div>
-						<div className='about-me--info--text--contacts--item'>+7 (906) 233-75-99</div>
-						<div className='about-me--info--text--contacts--item'>Freelancer</div>
-					</div>
-					<div className='about-me--info--text--links'>
-						<button className='about-me--view-work-btn'>view work</button>
-						<button className='about-me--hire-btn'>hire me</button>
-					</div>
+					<Text content={content.aboutMe.text} title={content.aboutMe.title} />
+					<Contacts content={content.aboutMe.contacts} />
+					<Links />
 				</div>
 			</div>
 			<div className='about-me--skills'>

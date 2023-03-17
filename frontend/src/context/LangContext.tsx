@@ -2,14 +2,21 @@ import {createContext, type ReactNode, useState, useEffect} from 'react';
 import ru from '../lang/ru';
 import en from '../lang/en';
 
-type Content = {
+export type Content = {
 	aboutMe: {
-		name: string;
-		birth: string;
-		city: string;
-		email: string;
-		phone: string;
-		currentJob: string;
+		title: string;
+		text: string;
+		contacts: {
+			name: string;
+			birth: string;
+			city: string;
+			email: string;
+			phone: string;
+			currentJob: string;
+		};
+		btn1: string;
+		btn2: string;
+		skills: string[];
 	};
 };
 
