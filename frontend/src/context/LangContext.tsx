@@ -18,6 +18,15 @@ export type Content = {
 		btn2: string;
 		skills: string[];
 	};
+	education: {
+		title: string;
+		educationItems: Array<{
+			title: string;
+			logo: unknown;
+			date: string;
+			educationSkills: string[];
+		}>;
+	};
 };
 
 type Lang = {

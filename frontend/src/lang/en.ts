@@ -1,3 +1,7 @@
+import logo from '../components/Education/color_big.svg';
+
+const l: unknown = logo;
+
 export default {
 	aboutMe: {
 		title: '',
@@ -14,6 +18,27 @@ export default {
 		btn2: '',
 		skills: [
 			'',
+		],
+	},
+	education: {
+		title: 'Education',
+		educationItems: [
+			{
+				title: 'Limited Liability Company «Netology»',
+				logo: l,
+				date: '2021-2022',
+				educationSkills: [
+					'Website layout by HTML and CSS',
+					'Frontend-development by JavaScript',
+					'Working with version control system Git and GitHub',
+					'Solve different tasks by Python',
+					'Website development with Django',
+					'Client server interaction',
+					'Working with databases by SQLAlchemy and PostgreSQL',
+					'Working with another services API',
+					'Unit-testing by PyTest and Jest',
+				],
+			},
 		],
 	},
 };

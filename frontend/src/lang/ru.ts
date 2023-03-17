@@ -1,3 +1,7 @@
+import logo from '../components/Education/color_big.svg';
+
+const l: unknown = logo;
+
 export default {
 	aboutMe: {
 		title: 'Обо мне',
@@ -14,6 +18,27 @@ export default {
 		btn2: 'Связаться со мной',
 		skills: [
 			'Python', 'JavaScript', 'SQL', 'Django', 'Django REST', 'TypeScript', 'React',
+		],
+	},
+	education: {
+		title: 'Образование',
+		educationItems: [
+			{
+				title: 'ООО Нетология-Групп',
+				logo: l,
+				date: '2021-2022',
+				educationSkills: [
+					'Вёрстка сайтов с использованием HTML и CSS',
+					'Фронтенд разработка на JavaScript',
+					'Работа с системой контроля версий Git и GitHub',
+					'Решение различных задач на Python',
+					'Разработка сайтов на Django',
+					'',
+					'Работа с базами данных с использованием SQLAlchemy и PostgreSQl',
+					'Взаимодействие со сторонними сервисами при помощи API',
+					'Unit-тестирование с использованием PyTest и Jest',
+				],
+			},
 		],
 	},
 };
