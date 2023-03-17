@@ -5,8 +5,6 @@ export default function tickerEngine(setText: (text: string) => void) {
 		let letterIndex = print ? 0 : text[index].length - 1;
 
 		const interval = setInterval(() => {
-			console.log(text[index].length, letterIndex, print);
-
 			if (letterIndex === text[index].length) {
 				clearInterval(interval);
 
