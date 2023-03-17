@@ -13,7 +13,7 @@ export default {
 		btn1: 'Мои работы',
 		btn2: 'Связаться со мной',
 		skills: [
-			'',
+			'Python', 'JavaScript', 'SQL', 'Django', 'Django REST', 'TypeScript', 'React',
 		],
 	},
 };

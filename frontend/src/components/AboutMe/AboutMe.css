@@ -105,67 +105,31 @@
 
 .about-me--skills {
   margin-top: 2em;
-  display: grid;
+  /* display: grid;
   grid-template-columns: auto auto auto;
-  column-gap: 30px;
+  column-gap: 30px; */
+  display: flex;
 }
 
 .skill-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   margin-bottom: 1em;
+  width: 100px;
+  /* background-color: grey; */
+  margin-left: 2em;
+  border-bottom: 5px solid #FF305B;
 }
 
 .skill-title {
-  margin-bottom: 1em;
+  padding: 2%;
   font-weight: bold;
   font-size: 0.8em;
 }
 
-.skill-line-container {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  height: 7px;
-  background-color: rgb(237, 237, 237);
-}
-
-.skill-line {
-  height: 100%;
-  background-color: #FF305B;
-  position: relative;
-}
-
-.skill-javaScript {
-  width: 36%;
-
-  animation: anim 2s
-}
-
-.skill-html {
- width: 31%; 
-}
-
-.skill-python {
-  width: 22%;
-}
-
-.skill-css {
-  width: 9%;
-}
-
-.skill-typeScript {
-  width: 1%;
-}
-
-.skill-other {
-  width: 1%;
-}
-
-.skill-line--value {
-  position: absolute;
-  top: -1em;
-  right: -1.5em;
-  background-color: rgb(235, 230, 230);
-  font-size: 0.8em;
+.skill-container:nth-child(1) {
+  margin-left: 0;
 }
 
 @media (max-width: 1200px) {

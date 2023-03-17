@@ -4,6 +4,7 @@ import './AboutMe.css';
 import Contacts from './Contacts';
 import portrait from './img/dmitrii.votchitsev_2215405451567359885_0.jpg';
 import Links from './Links';
+import SkillsContainer from './SkillsContainer';
 import Text from './Text';
 
 export default function AboutMe() {
@@ -21,56 +22,7 @@ export default function AboutMe() {
 					<Links />
 				</div>
 			</div>
-			<div className='about-me--skills'>
-				<div className='skill-container'>
-					<div className='skill-title'>JavaScript</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>36%</div>
-						</div>
-					</div>
-				</div>
-				<div className='skill-container'>
-					<div className='skill-title'>HTML</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>31%</div>
-						</div>
-					</div>
-				</div>
-				<div className='skill-container'>
-					<div className='skill-title'>Python</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>23%</div>
-						</div>
-					</div>
-				</div>
-				<div className='skill-container'>
-					<div className='skill-title'>CSS</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>9%</div>
-						</div>
-					</div>
-				</div>
-				<div className='skill-container'>
-					<div className='skill-title'>TypeScript</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>1%</div>
-						</div>
-					</div>
-				</div>
-				<div className='skill-container'>
-					<div className='skill-title'>Other</div>
-					<div className='skill-line-container'>
-						<div className='skill-line'>
-							<div className='skill-line--value'>1%</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<SkillsContainer skills={content.aboutMe.skills} />
 		</section>
 	);
 }
