@@ -105,10 +105,10 @@
 
 .about-me--skills {
   margin-top: 2em;
-  /* display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 30px; */
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+  column-gap: 30px;
+
 }
 
 .skill-container {
@@ -117,8 +117,6 @@
   justify-content: flex-start;
   margin-bottom: 1em;
   width: 100px;
-  /* background-color: grey; */
-  margin-left: 2em;
   border-bottom: 5px solid #FF305B;
 }
 
@@ -126,10 +124,6 @@
   padding: 2%;
   font-weight: bold;
   font-size: 0.8em;
-}
-
-.skill-container:nth-child(1) {
-  margin-left: 0;
 }
 
 @media (max-width: 1200px) {
@@ -165,10 +159,6 @@
   }
 
   .about-me--info--text--contacts {
-    grid-template-columns: auto;
-  }
-
-  .about-me--skills {
     grid-template-columns: auto;
   }
 }

@@ -19,7 +19,7 @@ export default function AboutMe() {
 				<div className='about-me--info--text'>
 					<Text content={content.aboutMe.text} title={content.aboutMe.title} />
 					<Contacts content={content.aboutMe.contacts} />
-					<Links />
+					<Links btn1={content.aboutMe.btn1} btn2={content.aboutMe.btn2} />
 				</div>
 			</div>
 			<SkillsContainer skills={content.aboutMe.skills} />
