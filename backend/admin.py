@@ -8,6 +8,8 @@ class ToolInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
+    fields = ('title', 'link', 'background')
+
     inlines = [
         ToolInline,
     ]
