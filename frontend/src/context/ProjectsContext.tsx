@@ -1,7 +1,7 @@
 import {createContext, useEffect, type ReactNode, useState} from 'react';
 import {getProjects} from '../api/requests';
 
-type Project = {
+export type Project = {
 	id: number;
 	title: string;
 	link: string;
@@ -13,16 +13,26 @@ type Project = {
 	}>;
 };
 
-export const ProjectsContext = createContext<Project[] | undefined>([]);
+type Context = {
+	projects: Project[];
+};
+
+export const ProjectsContext = createContext<Context>({
+	projects: [],
+});
 
 export const ProjectsState = ({children}: {children: ReactNode}) => {
-	const [projects, setProjects] = useState<Project[] | undefined>(undefined);
+	const [projects, setProjects] = useState<Context>({
+		projects: [],
+	});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await getProjects();
-				setProjects(response.data as Project[]);
+				setProjects({
+					projects: response.data as Project[],
+				});
 			} catch {
 				throw new Error('Failed to get a list of projects');
 			}

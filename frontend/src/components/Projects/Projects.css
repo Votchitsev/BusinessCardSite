@@ -1,0 +1,164 @@
+.pet-projects--container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 65%;
+  margin: 0 auto;
+  height: fit-content;
+}
+
+.pet-project {
+  position: relative;
+  display: flex;
+  width: 250px;
+  height: 250px;
+  overflow-y: hidden;
+  margin: 10px;
+}
+
+.opacity {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  content: '';
+  background-color: black;
+}
+
+.opacity-active {
+  position: absolute;
+  animation: opacity;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  transition: all 500ms;
+}
+
+.chaos-organizer {
+  background-image: url(./png/chaos-organizer.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-color: #d9fff3;
+}
+
+.rg {
+  background-image: url(./png/rg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-color: #d9fff3;
+  border-radius: 100%;
+}
+
+.pcc {
+  background-image: url(./png/PCC.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.pet-project--title {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 1;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+}
+
+.pet-project--title--active {
+  top: 30%;
+  transition: top 500ms;
+}
+
+.pet-project--stack-container {
+  position: absolute;
+  bottom: -30px;
+  left: 5px;
+  display: flex;
+  align-self: flex-end;
+}
+
+.stack-container-rg {
+  bottom: -55px;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.focus {
+  bottom: 5px;
+  transition: bottom 500ms;
+}
+
+.pet-project--stack-item {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 3px;
+}
+
+.pet-project--link {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  background-image: url(./svg/link.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50px;
+  width: 50px;
+  translate: -50% -50%;
+  border-radius: 25px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.pet-project--link:hover {
+  background-color: #FF305B;
+  background-image: url(./svg/link-white.svg);
+}
+
+.show-link {
+  top: 60%;
+  transition: all 500ms;
+}
+
+.js {
+  background-image: url(./svg/logo-javascript.svg);
+}
+
+.html {
+  background-image: url(./svg/html-1.svg);
+}
+
+.css {
+  background-image: url(./svg/css-3.svg);
+}
+
+.python {
+  background-image: url(./svg/python-5.svg);
+}
+
+.django {
+  background-image: url(./svg/django.svg);
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pet-projects--container {
+    width: 95%;
+  }
+}

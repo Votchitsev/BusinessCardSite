@@ -27,6 +27,9 @@ export type Content = {
 			educationSkills: string[];
 		}>;
 	};
+	projects: {
+		title: string;
+	};
 };
 
 type Lang = {
