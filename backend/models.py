@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.files.storage import FileSystemStorage
+
+upload_dir = FileSystemStorage()
 
 
 class Project(models.Model):
@@ -10,4 +13,4 @@ class Project(models.Model):
 
 class Tool(models.Model):
     name = models.CharField(max_length=20)
-    img = models.FileField()
+    img = models.FileField(storage=upload_dir)
