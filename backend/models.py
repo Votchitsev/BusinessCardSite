@@ -20,3 +20,20 @@ class Tool(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EducationOrganization(models.Model):
+    name = models.CharField(max_length=50)
+    logo = models.FileField(storage=upload_dir)
+
+    def __str__(self):
+        return self.name
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=200)
+    organization = models.ForeignKey(EducationOrganization, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+    
