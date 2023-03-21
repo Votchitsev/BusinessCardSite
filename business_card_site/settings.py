@@ -116,7 +116,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     BASE_DIR / "frontend/static/",
-    '/home/dmitry/BusinessCardSite/business_card_site/frontend/static/',
 ]
 
 MEDIA_ROOT = f'{BASE_DIR}/backend/upload/'
