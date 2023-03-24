@@ -30,6 +30,9 @@ export type Content = {
 	projects: {
 		title: string;
 	};
+	feedbackForm: {
+		title: string;
+	};
 };
 
 type Lang = {

@@ -40,4 +40,7 @@ export default {
 	projects: {
 		title: 'Projects',
 	},
+	feedbackForm: {
+		title: 'Get In Touch',
+	},
 };
