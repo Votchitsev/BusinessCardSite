@@ -28,6 +28,9 @@ class EducationCompany(models.Model):
     period = models.CharField(max_length=11, null=True)
     lang = models.ForeignKey('Lang', on_delete=models.CASCADE, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Education companies'
+
     def __str__(self):
         return self.name
 
@@ -42,6 +45,9 @@ class Skill(models.Model):
 
 class Lang(models.Model):
     name = models.CharField(max_length=5)
+
+    class Meta:
+        verbose_name_plural = "Languages"
 
     def __str__(self):
         return self.name
