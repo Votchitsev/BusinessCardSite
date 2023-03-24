@@ -1,7 +1,3 @@
-import logo from '../components/Education/color_big.svg';
-
-const l: unknown = logo;
-
 export default {
 	aboutMe: {
 		title: 'Обо мне',
@@ -25,7 +21,7 @@ export default {
 		educationItems: [
 			{
 				title: 'ООО Нетология-Групп',
-				logo: l,
+				logo: '',
 				date: '2021-2022',
 				educationSkills: [
 					'Вёрстка сайтов с использованием HTML и CSS',

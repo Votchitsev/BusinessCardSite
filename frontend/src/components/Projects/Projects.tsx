@@ -1,16 +1,12 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext} from 'react';
 import {LangContext} from '../../context/LangContext';
-import {ProjectsContext, ProjectsState} from '../../context/ProjectsContext';
+import {ProjectsContext} from '../../context/ProjectsContext';
 import ProjectsList from './ProjectsList';
 import './Projects.css';
 
 export default function Projects() {
 	const {content} = useContext(LangContext);
 	const {projects} = useContext(ProjectsContext);
-
-	useEffect(() => {
-		console.log(projects);
-	}, [projects]);
 
 	return (
 		<section className='pet-projects'>

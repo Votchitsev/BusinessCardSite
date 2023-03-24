@@ -1,10 +1,32 @@
-import {useContext} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {LangContext} from '../../context/LangContext';
+import {getEducation} from '../../api/requests';
 import './Education.css';
 import EducationContainer from './EducationContainer';
 
+type Data = Array<{
+	id: number;
+	name: string;
+	logo: string;
+	period: string;
+	skills: Array<{
+		id: number;
+		name: string;
+	}>;
+}>;
+
 export default function Education() {
-	const {content} = useContext(LangContext);
+	const {content, lang} = useContext(LangContext);
+	const [eduContent, setContent] = useState<Data>([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await getEducation(lang);
+			setContent(response.data as Data);
+		};
+
+		void fetchData();
+	}, [content]);
 
 	return (
 		<section className='education'>
@@ -12,7 +34,7 @@ export default function Education() {
 			<div className='section-title--underline-container'>
 				<div className='section-title--underline'></div>
 			</div>
-			<EducationContainer content={content.education} />
+			<EducationContainer content={eduContent} />
 		</section>
 	);
 }

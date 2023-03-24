@@ -4,3 +4,5 @@ node_modules
 upload
 !.gitkeep
 env/
+.vscode/
+todo

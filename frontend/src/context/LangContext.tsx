@@ -22,7 +22,7 @@ export type Content = {
 		title: string;
 		educationItems: Array<{
 			title: string;
-			logo: unknown;
+			logo: string;
 			date: string;
 			educationSkills: string[];
 		}>;

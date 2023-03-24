@@ -1,7 +1,3 @@
-import logo from '../components/Education/color_big.svg';
-
-const l: unknown = logo;
-
 export default {
 	aboutMe: {
 		title: '',
@@ -25,7 +21,7 @@ export default {
 		educationItems: [
 			{
 				title: 'Limited Liability Company «Netology»',
-				logo: l,
+				logo: '',
 				date: '2021-2022',
 				educationSkills: [
 					'Website layout by HTML and CSS',
