@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Tool
+from .models import Project, Tool, EducationCompany, Skill, Lang
 
 
 class ToolInline(admin.TabularInline):
@@ -17,4 +17,22 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Tool)
 class ToolAdmin(admin.ModelAdmin):
+    pass
+
+
+class SkillInline(admin.TabularInline):
+    model = Skill
+
+
+@admin.register(EducationCompany)
+class EducationCompanyAdmin(admin.ModelAdmin):
+    fields = ('name', 'logo', 'period', 'lang')
+
+    inlines = [
+        SkillInline,
+    ]
+
+
+@admin.register(Lang)
+class LangAdmin(admin.ModelAdmin):
     pass

@@ -22,9 +22,11 @@ class Tool(models.Model):
         return self.name
 
 
-class EducationOrganization(models.Model):
+class EducationCompany(models.Model):
     name = models.CharField(max_length=50)
     logo = models.FileField(storage=upload_dir)
+    period = models.CharField(max_length=11, null=True)
+    lang = models.ForeignKey('Lang', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
@@ -32,7 +34,14 @@ class EducationOrganization(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=200)
-    organization = models.ForeignKey(EducationOrganization, on_delete=models.CASCADE)
+    company = models.ForeignKey(EducationCompany, on_delete=models.CASCADE, null=True, related_name="skills")
+
+    def __str__(self):
+        return self.name
+    
+
+class Lang(models.Model):
+    name = models.CharField(max_length=5)
 
     def __str__(self):
         return self.name
