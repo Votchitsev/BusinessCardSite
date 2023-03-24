@@ -19,7 +19,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = '__all__'
+        fields = ['id', 'name']
 
 
 class EducationSerializer(serializers.ModelSerializer):
@@ -27,4 +27,4 @@ class EducationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EducationCompany
-        fields = ['id', 'name', 'logo', 'skills']
+        fields = ['id', 'name', 'logo', 'period', 'skills']
