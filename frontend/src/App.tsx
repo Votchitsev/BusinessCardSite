@@ -2,7 +2,6 @@ import {Banner} from './components/banner/Banner';
 import AboutMe from './components/AboutMe/AboutMe';
 import Education from './components/Education/Education';
 import Projects from './components/Projects/Projects';
-import {ProjectsState} from './context/ProjectsContext';
 
 function App() {
 	return (
@@ -10,9 +9,7 @@ function App() {
 			<Banner />
 			<AboutMe />
 			<Education />
-			<ProjectsState>
-				<Projects />
-			</ProjectsState>
+			<Projects />
 		</>
 	);
 }

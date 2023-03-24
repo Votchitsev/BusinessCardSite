@@ -1,7 +1,8 @@
 import {type Project} from '../../context/ProjectsContext';
+import {type ProjectsType} from './Projects';
 import ProjectItem from './ProjectItem';
 
-export default function ProjectsList({projects}: {projects: Project[]}) {
+export default function ProjectsList({projects}: {projects: ProjectsType}) {
 	return (
 		<div className='pet-projects--container'>
 			{projects.map(project =>
