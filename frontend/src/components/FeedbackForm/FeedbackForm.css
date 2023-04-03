@@ -191,6 +191,20 @@ textarea.contact-input {
   background-position: center;
 }
 
+.disappear-pop-up {
+  position: fixed;
+  top: 40vh;
+  left: 50vw;
+  translate: -50% -50%;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  z-index: 1;
+}
+
 @media (max-width: 1200px) {
   .contact-wrapper {
     flex-direction: column;

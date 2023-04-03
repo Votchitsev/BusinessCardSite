@@ -1,10 +1,14 @@
 import {LangContext} from '../../context/LangContext';
 import {useContext, useState} from 'react';
 import {postFeedbackMessage} from '../../api/requests';
+import PopUp from './PopUp';
 import './FeedbackForm.css';
 
 export default function FeedbackForm() {
 	const {content} = useContext(LangContext);
+	const [popUpContent, setPopUpContent] = useState('');
+	const [popUpActive, setPopUpActive] = useState(false);
+
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [text, setText] = useState('');
@@ -19,8 +23,10 @@ export default function FeedbackForm() {
 		};
 
 		try {
-			const response = await postFeedbackMessage(data);
-			console.log('Message is sent!');
+			await postFeedbackMessage(data);
+			setPopUpContent('Сообщение отправлено');
+			setPopUpActive(true);
+
 			setName('');
 			setEmail('');
 			setText('');
@@ -85,6 +91,14 @@ export default function FeedbackForm() {
 					</div>
 				</div>
 			</div>
+			{
+				popUpActive
+					? <PopUp
+						content={popUpContent}
+						setActive={setPopUpActive}
+					/>
+					: null
+			}
 		</section>
 	);
 }
