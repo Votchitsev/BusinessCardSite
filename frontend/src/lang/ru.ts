@@ -42,5 +42,10 @@ export default {
 	},
 	feedbackForm: {
 		title: 'Связаться со мной',
+		placeholders: {
+			name: 'Имя*:',
+			email: 'E-mail*:',
+			message: 'Сообщение*:',
+		},
 	},
 };

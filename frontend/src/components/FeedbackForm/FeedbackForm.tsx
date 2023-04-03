@@ -1,21 +1,65 @@
 import {LangContext} from '../../context/LangContext';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
+import {postFeedbackMessage} from '../../api/requests';
 import './FeedbackForm.css';
 
 export default function FeedbackForm() {
 	const {content} = useContext(LangContext);
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [text, setText] = useState('');
+
+	const onSubmitHandler = async (e: {preventDefault: () => void}) => {
+		e.preventDefault();
+
+		const data = {
+			name,
+			email,
+			text,
+		};
+
+		try {
+			const response = await postFeedbackMessage(data);
+			console.log('Message is sent!');
+			setName('');
+			setEmail('');
+			setText('');
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<section className='contact'>
 			<div className='contact-wrapper'>
-				<form className='contact-form'>
+				<form className='contact-form' onSubmit={onSubmitHandler}>
 					<h1 className='contact-form--title'>{content.feedbackForm.title}</h1>
 					<div className='contact-form--title--underline-container'>
 						<div className='contact-form--title--underline'></div>
 					</div>
-					<input className='contact-input' type='text' placeholder='Name*:' />
-					<input className='contact-input' type='e-mail' placeholder='E-mail*:' />
-					<textarea className='contact-input' placeholder='Message*:'></textarea>
+					<input
+						className='contact-input'
+						type='text'
+						placeholder={content.feedbackForm.placeholders.name}
+						value={name}
+						onChange={ e => {
+							setName(e.target.value);
+						}}/>
+					<input
+						className='contact-input'
+						type='e-mail'
+						placeholder={content.feedbackForm.placeholders.email}
+						value={email}
+						onChange={ e => {
+							setEmail(e.target.value);
+						}}/>
+					<textarea
+						className='contact-input'
+						placeholder={content.feedbackForm.placeholders.message}
+						value={text}
+						onChange={ e => {
+							setText(e.target.value);
+						}} />
 					<input type='submit' value='SEND' />
 				</form>
 				<div className='contact-plate'>

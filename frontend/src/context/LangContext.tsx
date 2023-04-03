@@ -32,6 +32,11 @@ export type Content = {
 	};
 	feedbackForm: {
 		title: string;
+		placeholders: {
+			name: string;
+			email: string;
+			message: string;
+		};
 	};
 };
 

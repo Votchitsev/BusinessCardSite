@@ -42,5 +42,10 @@ export default {
 	},
 	feedbackForm: {
 		title: 'Get In Touch',
+		placeholders: {
+			name: 'Name*:',
+			email: 'E-mail*:',
+			message: 'Message*:',
+		},
 	},
 };
