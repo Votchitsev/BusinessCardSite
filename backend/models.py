@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
 upload_dir = FileSystemStorage()
@@ -37,7 +38,12 @@ class EducationCompany(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=200)
-    company = models.ForeignKey(EducationCompany, on_delete=models.CASCADE, null=True, related_name="skills")
+    company = models.ForeignKey(
+        EducationCompany,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name="skills",
+    )
 
     def __str__(self):
         return self.name
@@ -51,4 +57,42 @@ class Lang(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    birthdate = models.DateField()
+    city = models.CharField(max_length=20)
+    phone = models.CharField(max_length=20)
+    position = models.CharField(max_length=20)
+
+    lang = models.ForeignKey(Lang, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return self.lang.name
+
+
+class Social(models.Model):
+    name = models.CharField(max_length=20)
+    link = models.URLField()
+    logo = models.FileField(storage=upload_dir)
+
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Социальная сеть'
+        verbose_name_plural = 'Социальные сети'
+
+
+    def __str__(self):
+        return '{contact} ({name})'.format(
+            contact=self.contact.first_name,
+            name=self.name,
+        )
     
