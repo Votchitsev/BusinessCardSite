@@ -3,29 +3,32 @@ import environ
 from pathlib import Path
 import telebot
 
-env = environ.Env(
-     DEBUG=(bool, False)
-)
 
-environ.Env.read_env(
-    os.path.join(
-        Path(__file__).resolve().parent.parent,
-        '.env'
-    )
-)
+class Bot:
+    def __init__(self):
+        self._env = self._env_init()
+        self._bot = telebot.TeleBot(self._env('BOT_TOKEN'))
 
-token = env('BOT_TOKEN')
+    def send_message(self, name, email, text):
+        message = 'Новое сообщение от {name} ({email}) \n\n{text}' \
+            .format(
+                name=name,
+                email=email,
+                text=text,
+            )
 
-bot = telebot.TeleBot(token)
+        self._bot.send_message(self._env('BOT_USER_CHAT_ID'), message)
 
-
-def send_message(name, email, text):
-
-    message = 'Новое сообщение от {name} ({email}) \n\n{text}' \
-        .format(
-            name=name,
-            email=email,
-            text=text,
+    def _env_init(self):
+        env = environ.Env(
+            DEBUG=(bool, False)
         )
 
-    bot.send_message(env('BOT_USER_CHAT_ID'), message)
+        environ.Env.read_env(
+            os.path.join(
+                Path(__file__).resolve().parent.parent,
+                '.env'
+            )
+        )
+
+        return env
