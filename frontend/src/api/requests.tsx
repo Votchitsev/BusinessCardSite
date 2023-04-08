@@ -1,9 +1,8 @@
 import axios, {type AxiosResponse} from 'axios';
+import Cookies from 'js-cookie';
 
 const BaseUrl = 'http://127.0.0.1:8000/api/';
 
-// axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-// axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.withCredentials = true;
 
 export const getProjects = async (): Promise<AxiosResponse> =>
@@ -15,6 +14,6 @@ export const getEducation = async (lang: string): Promise<AxiosResponse> =>
 export const postFeedbackMessage = async (data: Record<string, unknown>): Promise<AxiosResponse> =>
 	axios.post(BaseUrl + 'feedback_bot/', data, {
 		headers: {
-			'X-CSRFToken': 'H3QNUZ4FB1v5zRixWRFRiFt9TzCmAqGW',
+			'X-CSRFToken': Cookies.get('csrftoken'),
 		},
 	});
