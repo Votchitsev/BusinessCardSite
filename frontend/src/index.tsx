@@ -1,13 +1,17 @@
-import ReactDOM from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import App from './App';
 import {LangState} from './context/LangContext';
+import {store} from './GlobalState/store';
+import {Provider} from 'react-redux';
 import './index.css';
 
 const container = document.querySelector('#root');
-const root = ReactDOM.createRoot(container as HTMLElement);
+const root = createRoot(container! as HTMLElement);
 
 root.render(
-	<LangState>
-		<App />
-	</LangState>,
+	<Provider store={store}>
+		<LangState>
+			<App />
+		</LangState>
+	</Provider>,
 );

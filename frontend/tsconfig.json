@@ -19,7 +19,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": [
+      "react/next",
+      "react-dom/next"
+    ]
   },
   "include": [
     "src/",
