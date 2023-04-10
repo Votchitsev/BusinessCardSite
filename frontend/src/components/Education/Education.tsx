@@ -1,15 +1,17 @@
 import {useContext, useEffect} from 'react';
-import {LangContext} from '../../context/LangContext';
 import './Education.css';
 import EducationContainer from './EducationContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchEducation} from '../../GlobalState/educationSlice';
 import {type RootState} from '../../GlobalState/store';
-import {type EducationType} from '../../GlobalState/types';
+import {type EducationType, type Content} from '../../GlobalState/types';
 
 export default function Education() {
-	const {content} = useContext(LangContext);
 	const dispatch = useDispatch();
+
+	const content = useSelector<RootState>(
+		state => state.language.content,
+	) as Content;
 
 	const lang = useSelector<RootState>(
 		state => state.language.lang,
@@ -21,8 +23,7 @@ export default function Education() {
 
 	useEffect(() => {
 		dispatch<any>(fetchEducation(lang));
-		console.log(eduContent);
-	}, [dispatch]);
+	}, [dispatch, lang, content]);
 
 	return (
 		eduContent

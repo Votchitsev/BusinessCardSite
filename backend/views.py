@@ -15,7 +15,11 @@ class ProjectsList(mixins.ListModelMixin, generics.GenericAPIView):
 class Education(generics.GenericAPIView):
 
 	def get_queryset(self, lang):
-		companies = EducationCompany.objects.prefetch_related('skills').all()
+		companies = EducationCompany.objects.filter(
+			lang__name=lang,
+		).prefetch_related(
+			'skills',
+		).all()
 		
 		return companies
 
