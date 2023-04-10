@@ -40,3 +40,14 @@ export type Content = {
 		};
 	};
 };
+
+export type EducationType = Array<{
+	id: number;
+	name: string;
+	logo: string;
+	period: string;
+	skills: Array<{
+		id: number;
+		name: string;
+	}>;
+}>;
