@@ -51,3 +51,15 @@ export type EducationType = Array<{
 		name: string;
 	}>;
 }>;
+
+export type ProjectsType = Array<{
+	id: number;
+	title: string;
+	link: string;
+	background: string;
+	tools: Array<{
+		id: number;
+		name: string;
+		img: string;
+	}>;
+}>;

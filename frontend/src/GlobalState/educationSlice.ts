@@ -13,14 +13,15 @@ export const fetchEducation = createAsyncThunk(
 const educationSlice = createSlice({
 	name: 'education',
 	initialState: {
-		loading: 'loaded',
 		education: [] as EducationType,
 	},
 	reducers: {},
 	extraReducers(builder) {
-		builder.addCase(fetchEducation.fulfilled, (state, action) => {
-			state.education = action.payload;
-		});
+		builder.addCase(
+			fetchEducation.fulfilled,
+			(state, action) => {
+				state.education = action.payload;
+			});
 	},
 });
 
