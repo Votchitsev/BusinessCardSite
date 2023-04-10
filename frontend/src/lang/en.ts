@@ -1,7 +1,7 @@
 export default {
 	aboutMe: {
-		title: '',
-		text: '',
+		title: 'About me',
+		text: 'text about me',
 		contacts: {
 			name: 'Dmitrii Votchitsev',
 			birth: '28 October 1988',
@@ -10,10 +10,10 @@ export default {
 			phone: '+7 (906) 233-75-99',
 			currentJob: 'Freelancer',
 		},
-		btn1: '',
-		btn2: '',
+		btn1: 'view work',
+		btn2: 'hire me',
 		skills: [
-			'',
+			'Python', 'JavaScript', 'SQL', 'Django', 'Django REST', 'TypeScript', 'React',
 		],
 	},
 	education: {

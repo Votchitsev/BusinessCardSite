@@ -20,7 +20,7 @@ export const languageSlice = createSlice({
 			}
 
 			state.lang = 'ru';
-			state.content = en;
+			state.content = ru;
 		},
 	},
 });

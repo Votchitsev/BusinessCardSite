@@ -1,14 +1,15 @@
-import {useContext} from 'react';
-import {LangContext} from '../../context/LangContext';
 import './AboutMe.css';
 import Contacts from './Contacts';
 import portrait from './img/dmitrii.votchitsev_2215405451567359885_0.jpg';
 import Links from './Links';
 import SkillsContainer from './SkillsContainer';
 import Text from './Text';
+import {useSelector} from 'react-redux';
+import {type RootState} from '../../GlobalState/store';
+import {type Content} from '../../GlobalState/types';
 
 export default function AboutMe() {
-	const {content} = useContext(LangContext);
+	const content = useSelector<RootState>(state => state.language.content) as Content;
 
 	return (
 		<section className='about-me'>
