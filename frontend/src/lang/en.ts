@@ -53,5 +53,6 @@ export default {
 			address: 'Address',
 			email: 'Email',
 		},
+		sendMessage: 'Message sent',
 	},
 };

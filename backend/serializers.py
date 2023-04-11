@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Tool, EducationCompany, Skill
+from .models import Project, Tool, EducationCompany, Skill, Social
 
 
 class ToolSerializer(serializers.ModelSerializer):
@@ -28,3 +28,10 @@ class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = EducationCompany
         fields = ['id', 'name', 'logo', 'period', 'skills']
+
+
+class SocialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Social
+        fields = '__all__'
+        

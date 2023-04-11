@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import mixins, generics
-from .models import Project, EducationCompany, Skill
-from .serializers import ProjectSerializer, EducationSerializer
+from .models import Project, EducationCompany, Social
+from .serializers import ProjectSerializer, EducationSerializer, SocialSerializer
 
 
 class ProjectsList(mixins.ListModelMixin, generics.GenericAPIView):
@@ -30,4 +30,13 @@ class Education(generics.GenericAPIView):
 
 	def get(self, request):
 		return self.list(request)
-	
+
+
+class Socials(mixins.ListModelMixin, generics.GenericAPIView):
+
+    queryset = Social.objects.all()
+    serializer_class = SocialSerializer
+
+    def get(self, request):
+	    return self.list(request)
+    
