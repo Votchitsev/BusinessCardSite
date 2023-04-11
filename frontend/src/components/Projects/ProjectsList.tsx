@@ -1,5 +1,4 @@
-import {type Project} from '../../context/ProjectsContext';
-import {type ProjectsType} from './Projects';
+import {type ProjectsType} from '../../GlobalState/types';
 import ProjectItem from './ProjectItem';
 
 export default function ProjectsList({projects}: {projects: ProjectsType}) {

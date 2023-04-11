@@ -1,13 +1,22 @@
-import {LangContext} from '../../context/LangContext';
-import {useContext, useState} from 'react';
-import {postFeedbackMessage} from '../../api/requests';
+import {useState} from 'react';
 import PopUp from './PopUp';
 import './FeedbackForm.css';
+import {useDispatch, useSelector} from 'react-redux';
+import {type RootState} from '../../GlobalState/store';
+import {type Content} from '../../GlobalState/types';
+import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 
 export default function FeedbackForm() {
-	const {content} = useContext(LangContext);
+	const content = useSelector<RootState>(
+		state => state.language.content,
+	) as Content;
+
+	const dispatch = useDispatch();
+	const isLoaded = useSelector<RootState>(
+		state => state.feedbackForm.isLoaded,
+	);
+
 	const [popUpContent, setPopUpContent] = useState('');
-	const [popUpActive, setPopUpActive] = useState(false);
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -23,9 +32,8 @@ export default function FeedbackForm() {
 		};
 
 		try {
-			await postFeedbackMessage(data);
+			postFeedback(data);
 			setPopUpContent('Сообщение отправлено');
-			setPopUpActive(true);
 
 			setName('');
 			setEmail('');
@@ -66,22 +74,22 @@ export default function FeedbackForm() {
 						onChange={ e => {
 							setText(e.target.value);
 						}} />
-					<input type='submit' value='SEND' />
+					<input type='submit' value={content.feedbackForm.sendButton} />
 				</form>
 				<div className='contact-plate'>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon phone'></div>
-						<div className='contact-plate--item--title'>Phone:</div>
+						<div className='contact-plate--item--title'>{content.feedbackForm.socials.phone}:</div>
 						<div className='contact-plate--item--content'>{content.aboutMe.contacts.phone}</div>
 					</div>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon location'></div>
-						<div className='contact-plate--item--title'>Address:</div>
+						<div className='contact-plate--item--title'>{content.feedbackForm.socials.address}:</div>
 						<div className='contact-plate--item--content'>{content.aboutMe.contacts.city}</div>
 					</div>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon email'></div>
-						<div className='contact-plate--item--title'>Email</div>
+						<div className='contact-plate--item--title'>{content.feedbackForm.socials.email}:</div>
 						<div className='contact-plate--item--content'>{content.aboutMe.contacts.email}</div>
 					</div>
 					<div className='contact-plate--socials'>
@@ -92,10 +100,9 @@ export default function FeedbackForm() {
 				</div>
 			</div>
 			{
-				popUpActive
+				isLoaded
 					? <PopUp
 						content={popUpContent}
-						setActive={setPopUpActive}
 					/>
 					: null
 			}

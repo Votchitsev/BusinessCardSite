@@ -47,5 +47,11 @@ export default {
 			email: 'E-mail*:',
 			message: 'Сообщение*:',
 		},
+		sendButton: 'Отправить',
+		socials: {
+			phone: 'Телефон',
+			address: 'Адрес',
+			email: 'Email',
+		},
 	},
 };

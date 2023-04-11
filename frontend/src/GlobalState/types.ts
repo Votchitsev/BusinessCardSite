@@ -38,6 +38,12 @@ export type Content = {
 			email: string;
 			message: string;
 		};
+		sendButton: string;
+		socials: {
+			phone: string;
+			address: string;
+			email: string;
+		};
 	};
 };
 
@@ -63,3 +69,9 @@ export type ProjectsType = Array<{
 		img: string;
 	}>;
 }>;
+
+export type FormDataType = {
+	name: string;
+	email: string;
+	text: string;
+};

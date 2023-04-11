@@ -47,5 +47,11 @@ export default {
 			email: 'E-mail*:',
 			message: 'Message*:',
 		},
+		sendButton: 'Send',
+		socials: {
+			phone: 'Phone',
+			address: 'Address',
+			email: 'Email',
+		},
 	},
 };

@@ -1,22 +1,24 @@
 import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {setIsLoaded} from '../../GlobalState/feedbackFormSlice';
 
 export default function PopUp(
 	{
 		content,
-		setActive,
 	}: {
 		content: string;
-		setActive: (state: boolean) => void;
 	},
 ) {
 	const [opacity, setOpacity] = useState(0.8);
+
+	const dispatch = useDispatch();
 
 	const disappear = () => {
 		let intervalOpacity = 0.8;
 
 		const interval = setInterval(() => {
 			if (intervalOpacity < 0) {
-				setActive(false);
+				dispatch(setIsLoaded(false));
 				clearInterval(interval);
 			}
 
