@@ -4,6 +4,7 @@ export type LanguageState = {
 };
 
 export type Content = {
+	header: string[];
 	aboutMe: {
 		title: string;
 		text: string;
