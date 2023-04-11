@@ -1,15 +1,13 @@
 import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setIsLoaded} from '../../GlobalState/feedbackFormSlice';
+import {type RootState} from '../../GlobalState/store';
 
-export default function PopUp(
-	{
-		content,
-	}: {
-		content: string;
-	},
-) {
+export default function PopUp() {
 	const [opacity, setOpacity] = useState(0.8);
+	const message = useSelector<RootState>(
+		state => state.language.content.feedbackForm.sendMessage,
+	) as string;
 
 	const dispatch = useDispatch();
 
@@ -34,7 +32,7 @@ export default function PopUp(
 
 	return (
 		<div className='disappear-pop-up' style={{opacity}}>
-			{content}
+			{message}
 		</div>
 	);
 }

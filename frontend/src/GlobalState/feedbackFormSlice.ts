@@ -15,6 +15,7 @@ const feedbackFormSlice = createSlice({
 	name: 'feedbackForm',
 	initialState: {
 		isLoaded: false,
+		isError: '',
 	},
 	reducers: {
 		setIsLoaded(state, action) {
@@ -24,9 +25,15 @@ const feedbackFormSlice = createSlice({
 	extraReducers(builder) {
 		builder.addCase(
 			postFeedback.fulfilled,
-			(state, action) => {
-				console.log(action.payload);
+			state => {
 				state.isLoaded = true;
+			},
+		);
+		builder.addCase(
+			postFeedback.rejected,
+			(state, action) => {
+				console.log(action);
+				state.isError = action.error.message!;
 			},
 		);
 	},

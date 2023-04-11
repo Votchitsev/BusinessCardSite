@@ -1,22 +1,30 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import PopUp from './PopUp';
 import './FeedbackForm.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
-import {type Content} from '../../GlobalState/types';
+import {type SocialsType, type Content} from '../../GlobalState/types';
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
+import {fetchSocials} from '../../GlobalState/socialsSlice';
 
 export default function FeedbackForm() {
 	const content = useSelector<RootState>(
 		state => state.language.content,
 	) as Content;
 
+	const socials = useSelector<RootState>(
+		state => state.socials.socials,
+	) as SocialsType;
+
 	const dispatch = useDispatch();
+
 	const isLoaded = useSelector<RootState>(
 		state => state.feedbackForm.isLoaded,
 	);
 
-	const [popUpContent, setPopUpContent] = useState('');
+	const isError = useSelector<RootState>(
+		state => state.feedbackForm.isError,
+	);
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -31,17 +39,20 @@ export default function FeedbackForm() {
 			text,
 		};
 
-		try {
-			postFeedback(data);
-			setPopUpContent('Сообщение отправлено');
+		dispatch<any>(
+			postFeedback(data),
+		);
 
-			setName('');
-			setEmail('');
-			setText('');
-		} catch (error) {
-			console.log(error);
-		}
+		setName('');
+		setEmail('');
+		setText('');
 	};
+
+	useEffect(() => {
+		dispatch<any>(
+			fetchSocials(),
+		);
+	}, []);
 
 	return (
 		<section className='contact'>
@@ -79,31 +90,71 @@ export default function FeedbackForm() {
 				<div className='contact-plate'>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon phone'></div>
-						<div className='contact-plate--item--title'>{content.feedbackForm.socials.phone}:</div>
-						<div className='contact-plate--item--content'>{content.aboutMe.contacts.phone}</div>
+						<div
+							className='contact-plate--item--title'
+						>
+							{content.feedbackForm.socials.phone}:
+						</div>
+						<div
+							className='contact-plate--item--content'
+						>
+							{content.aboutMe.contacts.phone}
+						</div>
 					</div>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon location'></div>
-						<div className='contact-plate--item--title'>{content.feedbackForm.socials.address}:</div>
-						<div className='contact-plate--item--content'>{content.aboutMe.contacts.city}</div>
+						<div
+							className='contact-plate--item--title'
+						>
+							{content.feedbackForm.socials.address}:
+						</div>
+						<div
+							className='contact-plate--item--content'
+						>
+							{content.aboutMe.contacts.city}
+						</div>
 					</div>
 					<div className='contact-plate--item'>
 						<div className='contact-plate--item--icon email'></div>
-						<div className='contact-plate--item--title'>{content.feedbackForm.socials.email}:</div>
-						<div className='contact-plate--item--content'>{content.aboutMe.contacts.email}</div>
+						<div
+							className='contact-plate--item--title'
+						>
+							{content.feedbackForm.socials.email}:
+						</div>
+						<div
+							className='contact-plate--item--content'
+						>
+							{content.aboutMe.contacts.email}
+						</div>
 					</div>
 					<div className='contact-plate--socials'>
-						<a href='#' className='contact-plate--socials-item facebook'></a>
-						<a href='#' className='contact-plate--socials-item instagram'></a>
-						<a href='#' className='contact-plate--socials-item github'></a>
+						{
+							socials?.map(
+								social =>
+									<a
+										key={social.id}
+										href={social.link}
+										className='contact-plate--socials-item'
+										style={{
+											backgroundImage: `url(${social.logo})`,
+											backgroundRepeat: 'no-repeat',
+											backgroundPosition: 'center',
+										}}
+									>
+									</a>,
+							)
+						}
 					</div>
 				</div>
 			</div>
 			{
 				isLoaded
-					? <PopUp
-						content={popUpContent}
-					/>
+					? <PopUp />
+					: null
+			}
+			{
+				isError
+					? <h1>{isError as string}</h1>
 					: null
 			}
 		</section>

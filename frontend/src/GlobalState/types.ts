@@ -44,6 +44,7 @@ export type Content = {
 			address: string;
 			email: string;
 		};
+		sendMessage: string;
 	};
 };
 
@@ -75,3 +76,11 @@ export type FormDataType = {
 	email: string;
 	text: string;
 };
+
+export type SocialsType = Array<{
+	id: number;
+	name: string;
+	link: string;
+	logo: string;
+	contact: number;
+}>;
