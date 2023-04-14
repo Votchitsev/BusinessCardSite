@@ -85,3 +85,8 @@ export type SocialsType = Array<{
 	logo: string;
 	contact: number;
 }>;
+
+export type ElementPositionsType = Array<{
+	index: number;
+	offsetTop: number;
+}>;

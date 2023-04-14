@@ -1,10 +1,11 @@
-import {useContext, useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import './Education.css';
 import EducationContainer from './EducationContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchEducation} from '../../GlobalState/educationSlice';
 import {type RootState} from '../../GlobalState/store';
 import {type EducationType, type Content} from '../../GlobalState/types';
+import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 
 export default function Education() {
 	const dispatch = useDispatch();
@@ -21,13 +22,26 @@ export default function Education() {
 		state => state.education.education,
 	) as EducationType;
 
+	const positionRef = useRef<HTMLElement>(null);
+
 	useEffect(() => {
 		dispatch<any>(fetchEducation(lang));
 	}, [dispatch, lang, content]);
 
+	useEffect(() => {
+		dispatch<any>(
+			initElementPosition({
+				index: 2,
+				offsetTop: positionRef.current
+					? positionRef.current.getBoundingClientRect().y
+					: 0,
+			}),
+		);
+	}, []);
+
 	return (
 		eduContent
-			? <section className='education'>
+			? <section id='2' className='education' ref={positionRef}>
 				<h2 className='section-title'>{content.education.title}</h2>
 				<div className='section-title--underline-container'>
 					<div className='section-title--underline'></div>

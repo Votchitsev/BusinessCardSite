@@ -4,6 +4,7 @@ import educationReducer from './educationSlice';
 import projectsReducer from './projectsSlice';
 import feedbackFormReducer from './feedbackFormSlice';
 import socialsReducer from './socialsSlice';
+import elementPositionsReducer from './elementPositionsSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
 		projects: projectsReducer,
 		feedbackForm: feedbackFormReducer,
 		socials: socialsReducer,
+		elementPositions: elementPositionsReducer,
 	},
 });
 

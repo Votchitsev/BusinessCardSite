@@ -16,6 +16,11 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .section-border {
   width: 100%;
   display: block;

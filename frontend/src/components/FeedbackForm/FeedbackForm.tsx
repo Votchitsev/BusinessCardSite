@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import PopUp from './PopUp';
 import './FeedbackForm.css';
 import {useDispatch, useSelector} from 'react-redux';
@@ -6,6 +6,7 @@ import {type RootState} from '../../GlobalState/store';
 import {type SocialsType, type Content} from '../../GlobalState/types';
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 import {fetchSocials} from '../../GlobalState/socialsSlice';
+import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 
 export default function FeedbackForm() {
 	const content = useSelector<RootState>(
@@ -30,6 +31,8 @@ export default function FeedbackForm() {
 	const [email, setEmail] = useState('');
 	const [text, setText] = useState('');
 
+	const positionRef = useRef<HTMLElement>(null);
+
 	const onSubmitHandler = async (e: {preventDefault: () => void}) => {
 		e.preventDefault();
 
@@ -52,10 +55,19 @@ export default function FeedbackForm() {
 		dispatch<any>(
 			fetchSocials(),
 		);
+
+		dispatch<any>(
+			initElementPosition({
+				index: 4,
+				offsetTop: positionRef.current
+					? positionRef.current.getBoundingClientRect().y
+					: 0,
+			}),
+		);
 	}, []);
 
 	return (
-		<section className='contact'>
+		<section className='contact' id='4' ref={positionRef}>
 			<div className='contact-wrapper'>
 				<form className='contact-form' onSubmit={onSubmitHandler}>
 					<h1 className='contact-form--title'>{content.feedbackForm.title}</h1>
