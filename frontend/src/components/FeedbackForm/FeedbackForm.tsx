@@ -3,7 +3,7 @@ import PopUp from './PopUp';
 import './FeedbackForm.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
-import {type SocialsType, type Content} from '../../GlobalState/types';
+import {type SocialsType, type Content, type ProjectsType} from '../../GlobalState/types';
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 import {fetchSocials} from '../../GlobalState/socialsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
@@ -16,6 +16,10 @@ export default function FeedbackForm() {
 	const socials = useSelector<RootState>(
 		state => state.socials.socials,
 	) as SocialsType;
+
+	const projects = useSelector<RootState>(
+		state => state.projects.projects,
+	) as ProjectsType;
 
 	const dispatch = useDispatch();
 
@@ -55,16 +59,18 @@ export default function FeedbackForm() {
 		dispatch<any>(
 			fetchSocials(),
 		);
+	}, []);
 
+	useEffect(() => {
 		dispatch<any>(
 			initElementPosition({
 				index: 4,
 				offsetTop: positionRef.current
-					? positionRef.current.getBoundingClientRect().y
+					? positionRef.current.getBoundingClientRect().y - 150
 					: 0,
 			}),
 		);
-	}, []);
+	}, [socials, projects]);
 
 	return (
 		<section className='contact' id='4' ref={positionRef}>

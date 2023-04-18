@@ -22,7 +22,7 @@ export default function AboutMe() {
 			initElementPosition({
 				index: 1,
 				offsetTop: aboutMeRef.current
-					?	aboutMeRef.current.getBoundingClientRect().y
+					?	aboutMeRef.current.getBoundingClientRect().y - 150
 					: 0,
 			}),
 		);

@@ -9,10 +9,6 @@ import {useEffect, useRef} from 'react';
 import useActiveItem from './hooks/useActiveItem';
 
 function App() {
-	const activeItem = useActiveItem();
-
-	console.log(activeItem);
-
 	return (
 		<>
 			<Header />

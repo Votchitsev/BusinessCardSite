@@ -2,7 +2,7 @@ import {useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {HashLink} from 'react-router-hash-link';
 import {type RootState} from '../../GlobalState/store';
-import {type Content} from '../../GlobalState/types';
+import {type ElementPositionsType, type Content} from '../../GlobalState/types';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import useActiveItem from '../../hooks/useActiveItem';
 import './Header.css';
@@ -13,12 +13,15 @@ export default function Header() {
 	) as Content;
 
 	const activeElement = useActiveItem();
-	console.log(activeElement);
 
 	const [fixHeader, setFixHeader] = useState(false);
 	const [activeDropDownMenu, setActiveDropDownMenu] = useState(false);
 
 	const position = useScrollPosition();
+
+	const elementPositions = useSelector<RootState>(
+		state => state.elementPositions.elementPositions,
+	) as ElementPositionsType;
 
 	useEffect(() => {
 		if (position > 220) {
@@ -31,6 +34,24 @@ export default function Header() {
 
 	const toggleOnClickHandler = () => {
 		setActiveDropDownMenu(!activeDropDownMenu);
+	};
+
+	const onClickHandler = (index: number) => {
+		const targetElement = elementPositions.find(element => element.index === index);
+
+		if (!targetElement) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+
+			return;
+		}
+
+		window.scrollTo({
+			top: targetElement.offsetTop + 1,
+			behavior: 'smooth',
+		});
 	};
 
 	return (
@@ -50,17 +71,19 @@ export default function Header() {
 					{
 						content.header.map(
 							(item, index) =>
-								<HashLink
-									smooth
-									to={`#${index}`}
+								<li
 									key={index}
+									onClick={() => {
+										onClickHandler(index);
+									}}
 									className={
-										`header-menu-item header-menu-item
-									${index === activeElement ? 'header-menu-item--active' : ''}`
+										`header-menu-item ${
+											index === activeElement
+												? 'header-menu-item--active'
+												: ''
+										}`
 									}
-								>
-									{item}
-								</HashLink>,
+								>{ item }</li>,
 						)
 					}
 				</ul>

@@ -1,3 +1,8 @@
+.pet-projects {
+  display: flex;
+  flex-direction: column;
+}
+
 .pet-projects--container {
   display: flex;
   justify-content: space-around;

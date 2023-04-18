@@ -2,7 +2,7 @@ import {useEffect, useRef} from 'react';
 import ProjectsList from './ProjectsList';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
-import {type Content, type ProjectsType} from '../../GlobalState/types';
+import {type Content, type ProjectsType, type EducationType} from '../../GlobalState/types';
 import {fetchProjectsData} from '../../GlobalState/projectsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 import './Projects.css';
@@ -18,6 +18,10 @@ export default function Projects() {
 		state => state.projects.projects,
 	) as ProjectsType;
 
+	const eduContent = useSelector<RootState>(
+		state => state.education.education,
+	) as EducationType;
+
 	const positionRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
@@ -29,11 +33,11 @@ export default function Projects() {
 			initElementPosition({
 				index: 3,
 				offsetTop: positionRef.current
-					? positionRef.current.getBoundingClientRect().y
+					? positionRef.current.getBoundingClientRect().y - 150
 					: 0,
 			}),
 		);
-	}, []);
+	}, [projects, eduContent, positionRef]);
 
 	return (
 		<section id='3' className='pet-projects' ref={positionRef}>

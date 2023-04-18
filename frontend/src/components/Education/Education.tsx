@@ -33,11 +33,11 @@ export default function Education() {
 			initElementPosition({
 				index: 2,
 				offsetTop: positionRef.current
-					? positionRef.current.getBoundingClientRect().y
+					? positionRef.current.getBoundingClientRect().y - 150
 					: 0,
 			}),
 		);
-	}, []);
+	}, [eduContent, positionRef]);
 
 	return (
 		eduContent

@@ -10,9 +10,8 @@ export default function useActiveItem(): number {
 	) as ElementPositionsType;
 
 	const activePositions = positions.filter(
-		position => position.offsetTop - 10 < scrollPosition,
+		position => position.offsetTop < scrollPosition,
 	);
-	console.log(activePositions, scrollPosition);
 
 	if (!activePositions[activePositions.length - 1]) {
 		return 0;
