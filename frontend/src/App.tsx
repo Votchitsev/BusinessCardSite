@@ -5,10 +5,16 @@ import Projects from './components/Projects/Projects';
 import FeedbackForm from './components/FeedbackForm/FeedbackForm';
 import Header from './components/Header/Header';
 import LangSwitcher from './components/LangSwitcher/LangSwitcher';
-import {useEffect, useRef} from 'react';
-import useActiveItem from './hooks/useActiveItem';
+import {useEffect} from 'react';
+import {useBeforeUnload} from 'react-router-dom';
 
 function App() {
+	useBeforeUnload(() => {
+		window.scrollTo({
+			top: 0,
+		});
+	});
+
 	return (
 		<>
 			<Header />
