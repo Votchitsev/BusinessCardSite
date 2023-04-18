@@ -1,13 +1,17 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import PopUp from './PopUp';
 import './FeedbackForm.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
-import {type SocialsType, type Content} from '../../GlobalState/types';
+import {type SocialsType, type Content, type ProjectsType} from '../../GlobalState/types';
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 import {fetchSocials} from '../../GlobalState/socialsSlice';
+import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function FeedbackForm() {
+	const windowSize = useWindowSize();
+
 	const content = useSelector<RootState>(
 		state => state.language.content,
 	) as Content;
@@ -15,6 +19,10 @@ export default function FeedbackForm() {
 	const socials = useSelector<RootState>(
 		state => state.socials.socials,
 	) as SocialsType;
+
+	const projects = useSelector<RootState>(
+		state => state.projects.projects,
+	) as ProjectsType;
 
 	const dispatch = useDispatch();
 
@@ -29,6 +37,8 @@ export default function FeedbackForm() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [text, setText] = useState('');
+
+	const positionRef = useRef<HTMLElement>(null);
 
 	const onSubmitHandler = async (e: {preventDefault: () => void}) => {
 		e.preventDefault();
@@ -54,8 +64,19 @@ export default function FeedbackForm() {
 		);
 	}, []);
 
+	useEffect(() => {
+		dispatch<any>(
+			initElementPosition({
+				index: 4,
+				offsetTop: positionRef.current
+					? positionRef.current.getBoundingClientRect().y + window.scrollY - 150
+					: 0,
+			}),
+		);
+	}, [socials, projects, windowSize]);
+
 	return (
-		<section className='contact'>
+		<section className='contact' id='4' ref={positionRef}>
 			<div className='contact-wrapper'>
 				<form className='contact-form' onSubmit={onSubmitHandler}>
 					<h1 className='contact-form--title'>{content.feedbackForm.title}</h1>

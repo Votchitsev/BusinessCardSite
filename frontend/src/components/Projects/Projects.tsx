@@ -1,13 +1,17 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import ProjectsList from './ProjectsList';
-import './Projects.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
-import {type Content, type ProjectsType} from '../../GlobalState/types';
+import {type Content, type ProjectsType, type EducationType} from '../../GlobalState/types';
 import {fetchProjectsData} from '../../GlobalState/projectsSlice';
+import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
+import './Projects.css';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function Projects() {
 	const dispatch = useDispatch();
+
+	const windowSize = useWindowSize();
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -17,12 +21,29 @@ export default function Projects() {
 		state => state.projects.projects,
 	) as ProjectsType;
 
+	const eduContent = useSelector<RootState>(
+		state => state.education.education,
+	) as EducationType;
+
+	const positionRef = useRef<HTMLElement>(null);
+
 	useEffect(() => {
 		dispatch<any>(fetchProjectsData());
 	}, [dispatch, content]);
 
+	useEffect(() => {
+		dispatch<any>(
+			initElementPosition({
+				index: 3,
+				offsetTop: positionRef.current
+					? positionRef.current.getBoundingClientRect().y + window.scrollY - 150
+					: 0,
+			}),
+		);
+	}, [projects, eduContent, windowSize]);
+
 	return (
-		<section className='pet-projects'>
+		<section id='3' className='pet-projects' ref={positionRef}>
 			<h2
 				className='section-title'
 			>

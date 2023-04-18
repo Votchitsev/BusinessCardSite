@@ -4,6 +4,7 @@ export type LanguageState = {
 };
 
 export type Content = {
+	header: string[];
 	aboutMe: {
 		title: string;
 		text: string;
@@ -83,4 +84,9 @@ export type SocialsType = Array<{
 	link: string;
 	logo: string;
 	contact: number;
+}>;
+
+export type ElementPositionsType = Array<{
+	index: number;
+	offsetTop: number;
 }>;

@@ -1,4 +1,11 @@
 export default {
+	header: [
+		'Home',
+		'About me',
+		'Education',
+		'Projects',
+		'Contact',
+	],
 	aboutMe: {
 		title: 'About me',
 		text: 'text about me',
