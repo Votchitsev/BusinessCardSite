@@ -33,7 +33,7 @@ export default function Projects() {
 			initElementPosition({
 				index: 3,
 				offsetTop: positionRef.current
-					? positionRef.current.getBoundingClientRect().y - 150
+					? positionRef.current.getBoundingClientRect().y + window.scrollY - 150
 					: 0,
 			}),
 		);

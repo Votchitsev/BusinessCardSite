@@ -66,7 +66,7 @@ export default function FeedbackForm() {
 			initElementPosition({
 				index: 4,
 				offsetTop: positionRef.current
-					? positionRef.current.getBoundingClientRect().y - 150
+					? positionRef.current.getBoundingClientRect().y + window.scrollY - 150
 					: 0,
 			}),
 		);
