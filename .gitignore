@@ -7,3 +7,4 @@ env/
 .vscode/
 todo
 .env
+main.js
