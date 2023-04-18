@@ -6,6 +6,11 @@ export const fetchProjectsData = createAsyncThunk(
 	'projects/fetchProjectsData',
 	async () => {
 		const response = await getProjects();
+
+		if (response.statusText !== 'OK' || !Array.isArray(response.data)) {
+			throw new Error('Oops :( something wrong');
+		}
+
 		return response.data as ProjectsType;
 	},
 );
@@ -14,6 +19,7 @@ const projectsSlice = createSlice({
 	name: 'projects',
 	initialState: {
 		projects: [] as ProjectsType,
+		isError: '',
 	},
 	reducers: {},
 	extraReducers(builder) {
@@ -22,6 +28,13 @@ const projectsSlice = createSlice({
 			(state, action) => {
 				state.projects = action.payload;
 			});
+		builder.addCase(
+			fetchProjectsData.rejected,
+			(state, action) => {
+				state.isError = action.error.message!;
+				return state;
+			},
+		);
 	},
 });
 

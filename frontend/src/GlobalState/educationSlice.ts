@@ -6,6 +6,11 @@ export const fetchEducation = createAsyncThunk(
 	'education/fetchEducation',
 	async (lang: string) => {
 		const response = await getEducation(lang);
+
+		if (response.statusText !== 'OK' || !Array.isArray(response.data)) {
+			throw new Error('Ups ;( something wrong!');
+		}
+
 		return response.data as EducationType;
 	},
 );
@@ -14,6 +19,7 @@ const educationSlice = createSlice({
 	name: 'education',
 	initialState: {
 		education: [] as EducationType,
+		isError: '',
 	},
 	reducers: {},
 	extraReducers(builder) {
@@ -22,6 +28,12 @@ const educationSlice = createSlice({
 			(state, action) => {
 				state.education = action.payload;
 			});
+		builder.addCase(
+			fetchEducation.rejected,
+			(state, action) => {
+				state.isError = action.error.message!;
+			},
+		);
 	},
 });
 

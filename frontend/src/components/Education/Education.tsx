@@ -1,17 +1,18 @@
 import {useEffect, useRef} from 'react';
-import './Education.css';
-import EducationContainer from './EducationContainer';
 import {useDispatch, useSelector} from 'react-redux';
+import EducationContainer from './EducationContainer';
 import {fetchEducation} from '../../GlobalState/educationSlice';
-import {type RootState} from '../../GlobalState/store';
-import {type EducationType, type Content} from '../../GlobalState/types';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 import useWindowSize from '../../hooks/useWindowSize';
+import {setError} from '../../GlobalState/errorSlice';
+import {type RootState} from '../../GlobalState/store';
+import {type EducationType, type Content} from '../../GlobalState/types';
+import './Education.css';
 
 export default function Education() {
 	const dispatch = useDispatch();
-
 	const windowSize = useWindowSize();
+	const positionRef = useRef<HTMLElement>(null);
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -25,7 +26,9 @@ export default function Education() {
 		state => state.education.education,
 	) as EducationType;
 
-	const positionRef = useRef<HTMLElement>(null);
+	const error = useSelector<RootState>(
+		state => state.education.isError,
+	);
 
 	useEffect(() => {
 		dispatch<any>(fetchEducation(lang));
@@ -41,6 +44,12 @@ export default function Education() {
 			}),
 		);
 	}, [eduContent, positionRef, windowSize]);
+
+	useEffect(() => {
+		if (error) {
+			dispatch<any>(setError(error));
+		}
+	}, [error]);
 
 	return (
 		eduContent

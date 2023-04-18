@@ -1,16 +1,22 @@
 import {useEffect, useState, useRef} from 'react';
-import PopUp from './PopUp';
-import './FeedbackForm.css';
 import {useDispatch, useSelector} from 'react-redux';
-import {type RootState} from '../../GlobalState/store';
-import {type SocialsType, type Content, type ProjectsType} from '../../GlobalState/types';
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 import {fetchSocials} from '../../GlobalState/socialsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 import useWindowSize from '../../hooks/useWindowSize';
+import {setError} from '../../GlobalState/errorSlice';
+import PopUp from './PopUp';
+import {type RootState} from '../../GlobalState/store';
+import {type SocialsType, type Content, type ProjectsType} from '../../GlobalState/types';
+import './FeedbackForm.css';
 
 export default function FeedbackForm() {
 	const windowSize = useWindowSize();
+	const dispatch = useDispatch();
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [text, setText] = useState('');
+	const positionRef = useRef<HTMLElement>(null);
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -24,21 +30,17 @@ export default function FeedbackForm() {
 		state => state.projects.projects,
 	) as ProjectsType;
 
-	const dispatch = useDispatch();
+	const socialsError = useSelector<RootState>(
+		state => state.socials.isError,
+	);
 
 	const isLoaded = useSelector<RootState>(
 		state => state.feedbackForm.isLoaded,
 	);
 
-	const isError = useSelector<RootState>(
+	const postError = useSelector<RootState>(
 		state => state.feedbackForm.isError,
 	);
-
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [text, setText] = useState('');
-
-	const positionRef = useRef<HTMLElement>(null);
 
 	const onSubmitHandler = async (e: {preventDefault: () => void}) => {
 		e.preventDefault();
@@ -74,6 +76,16 @@ export default function FeedbackForm() {
 			}),
 		);
 	}, [socials, projects, windowSize]);
+
+	useEffect(() => {
+		if (socialsError) {
+			dispatch<any>(setError(socialsError));
+		}
+
+		if (postError) {
+			dispatch<any>(setError(postError));
+		}
+	}, [socialsError, postError]);
 
 	return (
 		<section className='contact' id='4' ref={positionRef}>
@@ -171,11 +183,6 @@ export default function FeedbackForm() {
 			{
 				isLoaded
 					? <PopUp />
-					: null
-			}
-			{
-				isError
-					? <h1>{isError as string}</h1>
 					: null
 			}
 		</section>

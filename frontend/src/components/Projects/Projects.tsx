@@ -1,17 +1,22 @@
 import {useEffect, useRef} from 'react';
-import ProjectsList from './ProjectsList';
 import {useDispatch, useSelector} from 'react-redux';
-import {type RootState} from '../../GlobalState/store';
-import {type Content, type ProjectsType, type EducationType} from '../../GlobalState/types';
+import ProjectsList from './ProjectsList';
 import {fetchProjectsData} from '../../GlobalState/projectsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
-import './Projects.css';
 import useWindowSize from '../../hooks/useWindowSize';
+import {setError} from '../../GlobalState/errorSlice';
+import {type RootState} from '../../GlobalState/store';
+import {type Content, type ProjectsType, type EducationType} from '../../GlobalState/types';
+import './Projects.css';
 
 export default function Projects() {
 	const dispatch = useDispatch();
 
 	const windowSize = useWindowSize();
+
+	const error = useSelector<RootState>(
+		state => state.projects.isError,
+	);
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -41,6 +46,14 @@ export default function Projects() {
 			}),
 		);
 	}, [projects, eduContent, windowSize]);
+
+	useEffect(() => {
+		if (error) {
+			dispatch<any>(
+				setError(error),
+			);
+		}
+	}, [error]);
 
 	return (
 		<section id='3' className='pet-projects' ref={positionRef}>

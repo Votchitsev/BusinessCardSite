@@ -12,7 +12,7 @@ export const getEducation = async (lang: string): Promise<AxiosResponse> =>
 	axios.get(BaseUrl + `education/?lang=${lang}`);
 
 export const postFeedbackMessage = async (data: Record<string, unknown>): Promise<AxiosResponse> =>
-	axios.post(BaseUrl + 'feedback_bot1/', data, {
+	axios.post(BaseUrl + 'feedback_bot/', data, {
 		headers: {
 			'X-CSRFToken': Cookies.get('csrftoken'),
 		},
