@@ -7,8 +7,11 @@ import {type SocialsType, type Content, type ProjectsType} from '../../GlobalSta
 import {postFeedback} from '../../GlobalState/feedbackFormSlice';
 import {fetchSocials} from '../../GlobalState/socialsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function FeedbackForm() {
+	const windowSize = useWindowSize();
+
 	const content = useSelector<RootState>(
 		state => state.language.content,
 	) as Content;
@@ -70,7 +73,7 @@ export default function FeedbackForm() {
 					: 0,
 			}),
 		);
-	}, [socials, projects]);
+	}, [socials, projects, windowSize]);
 
 	return (
 		<section className='contact' id='4' ref={positionRef}>

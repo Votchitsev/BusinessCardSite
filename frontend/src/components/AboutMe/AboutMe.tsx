@@ -5,13 +5,16 @@ import portrait from './img/dmitrii.votchitsev_2215405451567359885_0.jpg';
 import Links from './Links';
 import SkillsContainer from './SkillsContainer';
 import Text from './Text';
-import {AnyIfEmpty, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {type RootState} from '../../GlobalState/store';
 import {type Content} from '../../GlobalState/types';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function AboutMe() {
 	const content = useSelector<RootState>(state => state.language.content) as Content;
+
+	const windowSize = useWindowSize();
 
 	const dispatch = useDispatch();
 
@@ -26,7 +29,7 @@ export default function AboutMe() {
 					: 0,
 			}),
 		);
-	}, []);
+	}, [windowSize]);
 
 	return (
 		<section id='1' className='about-me' ref={aboutMeRef}>

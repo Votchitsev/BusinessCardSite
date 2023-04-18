@@ -6,9 +6,12 @@ import {fetchEducation} from '../../GlobalState/educationSlice';
 import {type RootState} from '../../GlobalState/store';
 import {type EducationType, type Content} from '../../GlobalState/types';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function Education() {
 	const dispatch = useDispatch();
+
+	const windowSize = useWindowSize();
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -37,7 +40,7 @@ export default function Education() {
 					: 0,
 			}),
 		);
-	}, [eduContent, positionRef]);
+	}, [eduContent, positionRef, windowSize]);
 
 	return (
 		eduContent

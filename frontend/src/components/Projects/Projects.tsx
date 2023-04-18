@@ -6,9 +6,12 @@ import {type Content, type ProjectsType, type EducationType} from '../../GlobalS
 import {fetchProjectsData} from '../../GlobalState/projectsSlice';
 import {initElementPosition} from '../../GlobalState/elementPositionsSlice';
 import './Projects.css';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export default function Projects() {
 	const dispatch = useDispatch();
+
+	const windowSize = useWindowSize();
 
 	const content = useSelector<RootState>(
 		state => state.language.content,
@@ -37,7 +40,7 @@ export default function Projects() {
 					: 0,
 			}),
 		);
-	}, [projects, eduContent, positionRef]);
+	}, [projects, eduContent, windowSize]);
 
 	return (
 		<section id='3' className='pet-projects' ref={positionRef}>
