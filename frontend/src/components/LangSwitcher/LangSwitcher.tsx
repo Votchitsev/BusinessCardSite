@@ -1,28 +1,32 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {changeLanguage} from '../../GlobalState/languageSlice';
 import {type RootState} from '../../GlobalState/store';
+import './LangSwitcher.css';
 
 export default function LangSwitcher() {
 	const dispatch = useDispatch();
 	const lang = useSelector<RootState>(state => state.language.lang) as string;
 
-	const onClickHandler = () => {
+	const onClickHandler = (language: 'ru' | 'en') => {
 		dispatch(
-			changeLanguage(),
+			changeLanguage(language),
 		);
 	};
 
 	return (
-		<button
-			onClick={onClickHandler}
-			style={{
-				position: 'fixed',
-				zIndex: 2,
-				bottom: '30px',
-				right: '30px',
-			}}
-		>
-			{ lang }
-		</button>
+		<div className='language-button'>
+			<div
+				className={`switcher left ${lang === 'ru' ? 'active' : ''}`}
+				onClick={() => {
+					onClickHandler('ru');
+				}}
+			>ru</div>
+			<div
+				className={`switcher right ${lang === 'en' ? 'active' : ''}`}
+				onClick={() => {
+					onClickHandler('en');
+				}}
+			>en</div>
+		</div>
 	);
 }

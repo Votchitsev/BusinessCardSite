@@ -12,15 +12,15 @@ export const languageSlice = createSlice({
 	name: 'Language',
 	initialState,
 	reducers: {
-		changeLanguage(state) {
-			if (state.lang === 'ru') {
-				state.lang = 'en';
-				state.content = en;
+		changeLanguage(state, action) {
+			state.lang = action.payload as 'ru' | 'en';
+
+			if (action.payload === 'ru') {
+				state.content = ru;
 				return;
 			}
 
-			state.lang = 'ru';
-			state.content = ru;
+			state.content = en;
 		},
 	},
 });
