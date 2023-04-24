@@ -8,6 +8,7 @@ import LangSwitcher from './components/LangSwitcher/LangSwitcher';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import {useSelector} from 'react-redux';
 import {type RootState} from './GlobalState/store';
+import Footer from './components/Footer/Footer';
 
 function App() {
 	const error = useSelector<RootState>(
@@ -25,6 +26,7 @@ function App() {
 				<Projects />
 				<FeedbackForm />
 				<LangSwitcher />
+				<Footer />
 			</>
 	);
 }
