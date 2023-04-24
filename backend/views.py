@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import mixins, generics
-from .models import Project, EducationCompany, Social
-from .serializers import ProjectSerializer, EducationSerializer, SocialSerializer
+from .models import Project, EducationCompany, Social, Contact
+from .serializers import ProjectSerializer, EducationSerializer, SocialSerializer, ContactSerializer
 
 
 class ProjectsList(mixins.ListModelMixin, generics.GenericAPIView):
@@ -40,3 +40,19 @@ class Socials(mixins.ListModelMixin, generics.GenericAPIView):
     def get(self, request):
 	    return self.list(request)
     
+
+class ContactView(mixins.ListModelMixin, generics.GenericAPIView):
+
+    def get_queryset(self, lang):
+        contacts = Contact.objects.filter(
+		lang__name = lang,
+    )
+        return contacts
+
+    def list(self, request):
+        queryset = self.get_queryset(request.GET['lang'])
+        serializer = ContactSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def get(self, request):
+	    return self.list(request)

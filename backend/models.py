@@ -65,6 +65,7 @@ class Contact(models.Model):
     birthdate = models.DateField()
     city = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
+    email = models.EmailField(default='dmitry.votchitsev@gmail.com')
     position = models.CharField(max_length=20)
 
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE)

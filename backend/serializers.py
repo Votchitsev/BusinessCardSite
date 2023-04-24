@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Tool, EducationCompany, Skill, Social
+from .models import Project, Tool, EducationCompany, Skill, Social, Contact, User
 
 
 class ToolSerializer(serializers.ModelSerializer):
@@ -34,4 +34,17 @@ class SocialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Social
         fields = '__all__'
-        
+
+
+class ContactSerializer(serializers.ModelSerializer):   
+    class Meta:
+        model = Contact
+        fields = [
+            'first_name',
+            'last_name',
+            'birthdate',
+            'city',
+            'phone',
+            'position',
+            'email'
+        ]
