@@ -1,6 +1,5 @@
 import {useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
-import {HashLink} from 'react-router-hash-link';
 import {type RootState} from '../../GlobalState/store';
 import {type ElementPositionsType, type Content} from '../../GlobalState/types';
 import useScrollPosition from '../../hooks/useScrollPosition';

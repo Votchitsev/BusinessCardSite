@@ -18,7 +18,7 @@ export default {
 			currentJob: 'Фрилансер',
 		},
 		btn1: 'Мои работы',
-		btn2: 'Связаться со мной',
+		btn2: 'Контакты',
 		skills: [
 			'Python', 'JavaScript', 'SQL', 'Django', 'Django REST', 'TypeScript', 'React',
 		],
