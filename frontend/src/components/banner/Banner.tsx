@@ -8,7 +8,7 @@ export function Banner() {
 			<div className='banner-content-container'>
 				<div className='banner-content--static-text'>
 					<div className='banner-content--static-text--hello'>Hello,</div>
-					<div className='banner-content--static-text--name'>i am dmitrii votchitsev</div>
+					<div className='banner-content--static-text--name'>i am dmitry votchitsev</div>
 				</div>
 				<Ticker />
 			</div>

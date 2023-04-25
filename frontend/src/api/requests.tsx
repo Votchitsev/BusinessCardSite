@@ -20,3 +20,6 @@ export const postFeedbackMessage = async (data: Record<string, unknown>): Promis
 
 export const getSocials = async (): Promise<AxiosResponse> =>
 	axios.get(BaseUrl + 'socials/');
+
+export const getContact = async (lang: string): Promise<AxiosResponse> =>
+	axios.get(BaseUrl + `contact/?lang=${lang}`);

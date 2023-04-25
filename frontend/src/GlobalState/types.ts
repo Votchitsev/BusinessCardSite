@@ -90,3 +90,13 @@ export type ElementPositionsType = Array<{
 	index: number;
 	offsetTop: number;
 }>;
+
+export type ContactType = {
+	first_name: string;
+	last_name: string;
+	birthdate: string;
+	city: string;
+	phone: string;
+	position: string;
+	email: string;
+};

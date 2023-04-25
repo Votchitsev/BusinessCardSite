@@ -6,6 +6,7 @@ import feedbackFormReducer from './feedbackFormSlice';
 import socialsReducer from './socialsSlice';
 import elementPositionsReducer from './elementPositionsSlice';
 import errorReducer from './errorSlice';
+import contactsReducer from './contactSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
 		socials: socialsReducer,
 		elementPositions: elementPositionsReducer,
 		error: errorReducer,
+		contacts: contactsReducer,
 	},
 });
 
