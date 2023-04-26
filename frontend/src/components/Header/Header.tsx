@@ -53,12 +53,19 @@ export default function Header() {
 		});
 	};
 
+	const onLogoClickHandler = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
 	return (
 		<section
 			className={`header ${fixHeader ? 'header-fixed' : ''}`}
 		>
 			<div className='header-container'>
-				<div className='header-logo'>D.Votchitsev</div>
+				<div className='header-logo' onClick={onLogoClickHandler} >D.Votchitsev</div>
 				<a
 					className={`header-menu-toggle ${fixHeader ? 'toggle-black' : ''}`}
 					onClick={toggleOnClickHandler}
