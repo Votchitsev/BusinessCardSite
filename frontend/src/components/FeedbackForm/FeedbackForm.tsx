@@ -102,7 +102,9 @@ export default function FeedbackForm() {
 						value={name}
 						onChange={ e => {
 							setName(e.target.value);
-						}}/>
+						}}
+						required
+					/>
 					<input
 						className='contact-input'
 						type='e-mail'
@@ -110,14 +112,18 @@ export default function FeedbackForm() {
 						value={email}
 						onChange={ e => {
 							setEmail(e.target.value);
-						}}/>
+						}}
+						required
+					/>
 					<textarea
 						className='contact-input'
 						placeholder={content.feedbackForm.placeholders.message}
 						value={text}
 						onChange={ e => {
 							setText(e.target.value);
-						}} />
+						}}
+						required
+					/>
 					<input type='submit' value={content.feedbackForm.sendButton} />
 				</form>
 				<div className='contact-plate'>
