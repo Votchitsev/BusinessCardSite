@@ -67,6 +67,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField(default='dmitry.votchitsev@gmail.com')
     position = models.CharField(max_length=20)
+    about_me = models.TextField(max_length=600, default='Text about me...')
 
     lang = models.ForeignKey(Lang, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)

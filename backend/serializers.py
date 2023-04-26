@@ -46,5 +46,6 @@ class ContactSerializer(serializers.ModelSerializer):
             'city',
             'phone',
             'position',
-            'email'
+            'email',
+            'about_me',
         ]

@@ -99,4 +99,5 @@ export type ContactType = {
 	phone: string;
 	position: string;
 	email: string;
+	about_me: string;
 };

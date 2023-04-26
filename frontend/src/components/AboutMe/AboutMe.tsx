@@ -64,7 +64,7 @@ export default function AboutMe() {
 					<img className='about-me--info--photo' src={portrait as string} />
 				</div>
 				<div className='about-me--info--text'>
-					<Text content={content.aboutMe.text} title={content.aboutMe.title} />
+					<Text content={contacts.about_me} title={content.aboutMe.title} />
 					<Contacts content={contacts} />
 					<Links btn1={content.aboutMe.btn1} btn2={content.aboutMe.btn2} />
 				</div>
