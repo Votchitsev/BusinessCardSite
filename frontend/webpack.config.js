@@ -10,6 +10,7 @@ module.exports = {
 		filename: 'main.js',
 	},
 	watch: true,
+	devtool: 'source-map',
 	mode: 'development',
 	module: {
 		rules: [
