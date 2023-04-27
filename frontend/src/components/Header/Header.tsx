@@ -38,6 +38,10 @@ export default function Header() {
 	const onClickHandler = (index: number) => {
 		const targetElement = elementPositions.find(element => element.index === index);
 
+		if (activeDropDownMenu) {
+			setActiveDropDownMenu(false);
+		}
+
 		if (!targetElement) {
 			window.scrollTo({
 				top: 0,
